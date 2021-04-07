@@ -4,12 +4,12 @@
 
 # Index
 
-Contibutors/Team Members
+# Contibutors/Team Members
 
-Raees Ahmad
-Hafiza Asma
-Ibrahim
-Deep Patel
+1. Raees Ahmad
+2. Hafiza Asma
+3. Ibrahim
+4. Deep Patel
 
 //........................................................................................
 //........................................................................................
