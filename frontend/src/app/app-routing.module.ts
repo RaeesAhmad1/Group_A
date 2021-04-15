@@ -20,7 +20,11 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
-  
+  {path: 'admin', component: MainNavComponent,canActivate:[AuthGuard],
+
+  },
+  {path: 'faculty', component: FacultyNavComponent,canActivate:[AuthGuard],
+  }  
 ];
 
 @NgModule({
