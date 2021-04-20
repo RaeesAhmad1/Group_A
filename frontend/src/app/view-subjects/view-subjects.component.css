@@ -1,0 +1,23 @@
+th.mat-header-cell {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    color: #673ab7;
+    padding: 6px;
+}
+
+td.mat-cell{
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    padding: 6px;
+}
+
+.mat-paginator{
+    width: 100%;
+}
+
+:host ::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+
+}

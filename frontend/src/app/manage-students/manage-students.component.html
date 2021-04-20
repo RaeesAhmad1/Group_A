@@ -1,0 +1,77 @@
+
+<div *ngIf="pageload">
+    <mat-spinner style="left: 42%; top: 176px;"></mat-spinner>
+  </div>
+
+  <mat-tab-group *ngIf="!pageload">
+    <mat-tab label="View Details"> 
+        <table style=" margin: 4px;">
+            <tr>
+                <td rowspan="6" colspan="2"><img src={{results.image}} height="185px" width="150px" ></td><th>Name:</th><td style="padding-right: 24px;">{{results.name}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">Gender:</th><td>{{results.gender}}</td>
+            </tr>
+            <tr>
+                <th>Course:</th><td style="padding-right: 24px;">{{results.course}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">DOB:</th><td>{{results.dob}}&nbsp;     (YYYY-MM-DD)</td>
+            </tr>
+            <tr>
+                <th>Branch:</th><td style="padding-right: 24px;">{{results.branch}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">Mobile:</th><td>{{results.mobile}}</td>
+            </tr>
+            <tr>
+                <th>Student Number:</th><td style="padding-right: 24px;">{{results.std_no}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">Email:</th><td>{{results.email}}</td>
+            </tr>
+            <tr>
+                <th>Year:</th><td style="padding-right: 24px;">{{years[results.year]}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">Hostler:</th><td>{{results.hostler}}</td>
+            </tr>
+            <tr>
+                <th>Semester:</th><td style="padding-right: 24px;">{{years[results.semester]}}</td><th style="border-left: solid 1px rgb(150, 150, 150); padding-left: 24px;">Fee Status:</th><td>{{results.feeStatus}}</td>
+            </tr>
+        </table>
+        <hr>
+        <table style="margin-left: 8px; margin-right: 8px;">
+            <tr>
+                <th>Address:</th><td>{{results.address}}</td>
+            </tr>
+            <tr>
+                <th>City:</th><td>{{results.city}}</td>
+            </tr>
+            <tr>
+                <th>Father's Name:</th><td>{{results.fatherName}}</td>
+            </tr>
+            <tr>
+                <th>Father's Occupation:</th><td>{{results.fatherOccupation}}</td>
+            </tr>
+            <tr>
+                <th>Mother's Name:</th><td>{{results.motherName}}</td>
+            </tr>
+            <tr>
+                <th>Mother's Occupation:</th><td>{{results.motherOccupation}}</td>
+            </tr>
+        </table>
+        <hr>
+        <table style="margin-left: 8px; margin-right: 8px; width: 95%;">
+            <tr>
+                <th style="width: 50%; text-align: center;">
+                <table style="width: 100%;">
+                    <tr>
+                        <th style="text-align: center; width: 100%;">Core Subjects</th>
+                    </tr>
+                    <tr *ngFor="let i of results.core_subjects">
+                        <td style="text-align: left;">{{i.subject_name}}</td>
+                    </tr>
+                </table>
+                </th><th style="width: 50%; text-align: center; border-left: solid 1px rgb(150, 150, 150);">                
+                    <table style="width: 100%;">
+                        <tr>
+                            <th style="text-align: center; width: 100%;">Optional Subjects</th>
+                        </tr>
+                        <tr *ngFor="let i of results.optional_subjects">
+                            <td style="text-align: left;">{{i.subject_name}}</td>
+                        </tr>
+                    </table>
+            </th>
+            </tr>
+        </table>
+      </mat-tab>
+    <mat-tab label="Edit Student">
+
+    </mat-tab>
+  </mat-tab-group>
