@@ -23,7 +23,16 @@ const routes: Routes = [
   {path: 'admin', component: MainNavComponent,canActivate:[AuthGuard],
   children:[
     {path: 'dashboard', component: DashboardComponent},
-    
+    {path: 'manage-users', component: UserListComponent},
+    {path: 'manage-students', component: StudentListComponent},
+    {path: 'create-user', component: CreateUserComponent},
+    {path: 'create-students', component: CreateStudentComponent},
+    {path: 'view-fee', component: ViewFeeComponent},
+    {path: 'manage-fee', component: ManageFeeComponent},
+    {path: 'view-courses', component: ViewCoursesComponent},
+    {path: 'manage-courses', component: ManageCoursesComponent},
+    {path: 'time-table', component: TimeTableComponent},
+    {path: 'notice', component: NoticesComponent}
   ]
   },
   {path: 'faculty', component: FacultyNavComponent,canActivate:[AuthGuard],

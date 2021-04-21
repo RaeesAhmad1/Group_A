@@ -4,6 +4,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,20 +23,45 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { CreateStudentComponent } from './create-student/create-student.component';
+import { ManageStudentsComponent } from './manage-students/manage-students.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ManageFeeComponent } from './manage-fee/manage-fee.component';
+import { ViewCoursesComponent } from './view-courses/view-courses.component';
+import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
+import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
+import { ViewSubjectsComponent } from './view-subjects/view-subjects.component'; 
 import {MatChipsModule} from '@angular/material/chips';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { NoticesComponent } from './notices/notices.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainNavComponent,
     LoginPageComponent,
+    CreateUserComponent,
+    ManageUserComponent,
+    CreateStudentComponent,
+    ManageStudentsComponent,
+    StudentListComponent,
+    UserListComponent,
+    ManageFeeComponent,
+    ViewCoursesComponent,
+    ManageCoursesComponent,
+    ManageSubjectsComponent,
+    ViewSubjectsComponent,
+    NoticesComponent,
   ],
   imports: [
     BrowserModule,

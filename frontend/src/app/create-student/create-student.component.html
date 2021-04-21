@@ -1,0 +1,147 @@
+<div class="container-fluid" style="padding: 2%;">
+    <h1 class="mat-h1">Create Student</h1>
+    <mat-card class="login-card">
+        <form #f="ngForm"  [formGroup]="createStudent" style="margin-top: 3rem;" enctype="multipart/form-data">
+            <mat-horizontal-stepper  #stepper linear>
+                <mat-step  [editable]="isEditable">
+                    <ng-template matStepLabel>Academic Details</ng-template>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Name</mat-label>
+                <input matInput name="name" formControlName="name" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Email</mat-label>
+                <input matInput name="email" formControlName="email" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Mobile</mat-label>
+                <input matInput name="mobile" formControlName="mobile" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Course</mat-label>
+                <mat-select name="course" formControlName="course" (selectionChange)="branchform()" required>
+                    <mat-option *ngFor="let course of courses" [value]="course">
+                      {{ course }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Branch</mat-label>
+                <mat-select name="branch" formControlName="branch" required>
+                    <mat-option *ngFor="let branch of branches" [value]="branch">
+                      {{ branch }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Year</mat-label>
+                <mat-select name="year" formControlName="year" required>
+                    <mat-option *ngFor="let year of years" [value]="year.value">
+                      {{ year.viewValue }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Semester</mat-label>
+                <mat-select name="semester" formControlName="semester" required (selectionChange)="subjectform()">
+                    <mat-option *ngFor="let year of semesters" [value]="year.value">
+                      {{ year.viewValue }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+              <mat-label>Student Number</mat-label>
+              <input matInput name="std_no" formControlName="std_no" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+            <mat-label>Optional Subject</mat-label>
+            <mat-select name="optional_subjects" formControlName="subject_name" required (selectionChange)="Opsubjectform()">
+                <mat-option *ngFor="let subject of OpSub" [value]="subject">
+                  {{ subject.subject_name }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <div class="row">
+          <div class="col-md-2">
+            <h4 style="font-weight: 600; font-family: Montserrat;">Student Image:</h4>
+          </div>
+          <div class="col-md-10">
+            <input name="image" formControlName="image" required type="file" placeholder="Image" (change)="onFile($event)"/>
+          </div>
+        </div>
+                <div>
+                <button mat-raised-button type="button" matStepperNext color="primary">Next</button>
+              </div>
+            </mat-step>
+
+
+
+            <mat-step [editable]="isEditable">
+                <ng-template matStepLabel>Personel Details</ng-template>
+                <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                  <mat-label>Father Name</mat-label>
+                  <input matInput name="fatherName" formControlName="fatherName" required />
+              </mat-form-field>
+              <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                <mat-label>Mother Name</mat-label>
+                <input matInput name="motherName" formControlName="motherName" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+              <mat-label>Date of Birth</mat-label>
+              <input matInput name="dob" formControlName="dob" required type="date" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+            <mat-label>Father's Occuptaion</mat-label>
+              <input matInput name="fatherOccupation" formControlName="fatherOccupation" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=49 [style.padding.%]=1>
+            <mat-label>Mother's Occuptaion</mat-label>
+              <input matInput name="motherOccupation" formControlName="motherOccupation" required />
+          </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+            <mat-label>Hostler</mat-label>
+            <mat-select name="hostler" formControlName="hostler" required>
+                <mat-option *ngFor="let subject of hostel" [value]="subject">
+                  {{ subject }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+            <mat-label>Gender</mat-label>
+            <mat-select name="gender" formControlName="gender" required>
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{ gender }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+            <mat-label>Fee Status</mat-label>
+            <mat-select name="feeStatus" formControlName="feeStatus" required>
+                <mat-option *ngFor="let subject of fees" [value]="subject">
+                  {{ subject }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" [style.width.%]=66 [style.padding.%]=1>
+          <mat-label>Address</mat-label>
+            <input matInput name="address" formControlName="address" required />
+        </mat-form-field>
+          <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+            <mat-label>City</mat-label>
+              <input matInput name="city" formControlName="city" required />
+          </mat-form-field>
+
+            <div>
+                <button mat-raised-button type="submit" matStepperNext color="primary" (click)="submit(f)">Submit</button>
+              </div>
+        </mat-step>
+
+
+
+        
+    
+    </mat-horizontal-stepper>
+        </form>
+    </mat-card>
+</div>
+
