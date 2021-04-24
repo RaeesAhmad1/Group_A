@@ -1,0 +1,56 @@
+.login-card {
+    padding: 0%;
+    overflow-x: hidden;
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 35px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 6px !important;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+    width: 90%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+.row{
+    padding: 15px ;
+    margin: 0px;
+}
+
+  td,th{
+    padding-left: 6px;
+    padding-right: 6px;
+    font-family: Montserrat;
+    font-weight: 500;
+    text-align: center;
+}
+
+th{
+    font-weight: 600;
+}
+
+hr{
+    margin:12px;
+    border-top: solid 1px rgb(150, 150, 150);
+}
+
+h2{
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+p,h4{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+a{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}

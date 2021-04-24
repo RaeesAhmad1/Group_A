@@ -1,0 +1,69 @@
+<div style="padding: 2%;">
+    <h2>Notice</h2>
+    <mat-card class="login-card">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        <div class="row">
+            <mat-tab-group style="height: 100%;">
+                <mat-tab label="View">
+                    <ul style="list-style-type:none; padding: 0%;" >
+                        <li *ngFor="let i of results | paginate : {id: 'pagination',itemsPerPage: 3, currentPage: page, totalItems: total};">
+                            <div style="padding: 3%; padding-bottom: 3px;" >
+                                <h2 style="display: inline;">{{i.heading}}</h2>
+                                <h4 style="float: right;">{{i.createdAt}}</h4>
+                                <p>{{i.description}}</p>
+                                <p><strong>Years&nbsp;:</strong>&nbsp;{{i.year}}</p>
+                                <p style="display: inline;"><strong>Department&nbsp;:</strong>&nbsp;{{i.department}}</p>
+                                <p style="float: right"><a (click)="viewNotice(i._id)">View</a></p>                                
+                            </div>
+                            <hr>
+                        </li>                        
+                    </ul>
+                    <div class="page">
+                        <pagination-controls id="pagination" (pageChange)="page = $event" (pageBoundsCorrection)="page = $event" maxSize="5">
+                        </pagination-controls>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Create">
+                    <form #f="ngForm"  [formGroup]="uploadForm" style="margin-top: 3rem;" enctype="multipart/form-data" (ngSubmit)="submit(f)">
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Heading</mat-label>
+                            <input matInput name="heading" formControlName="heading" required />
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Department</mat-label>
+                            <mat-select name="department" formControlName="department" required multiple >
+                                <mat-option *ngFor="let year of departments" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Year</mat-label>
+                            <mat-select name="year" formControlName="year" required multiple>
+                                <mat-option *ngFor="let year of years" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=99 [style.padding.%]=1>
+                            <mat-label>Description</mat-label>
+                            <input matInput name="description" formControlName="description" required />
+                        </mat-form-field>
+                        <div class="row" style="padding-left:0%">
+                            <div class="col-md-3">
+                              <h4 style="font-weight: 600; font-family: Montserrat;">Notice:</h4>
+                            </div>
+                            <div class="col-md-5">
+                              <input name="docLink" formControlName="docLink" required type="file" placeholder="PDF" (change)="onFile($event)"/>
+                            </div>
+                            <div class="col-md-4">
+                                <button mat-raised-button type="submit" color="primary" style="width: 80%;">Submit</button>
+                            </div>
+                          </div>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+     </mat-card>       
+</div>
