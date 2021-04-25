@@ -1,0 +1,116 @@
+<div style="padding: 2%;">
+    <h2>Time Table</h2>
+    <mat-card class="login-card">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        <div class="row">
+            <mat-tab-group style="height: 100%;">
+                <mat-tab label="View">
+                    <form #f="ngForm"  [formGroup]="viewForm" style="margin-top: 3rem;" enctype="multipart/form-data" (ngSubmit)="search(f)">
+                        <mat-form-field appearance="outline" [style.width.%]=25 [style.padding.%]=1>
+                            <mat-label>Course</mat-label>
+                            <mat-select name="course" formControlName="course" (selectionChange)="getBranches()">
+                                <mat-option *ngFor="let course of courses" [value]="course">
+                                  {{ course }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=25 [style.padding.%]=1>
+                            <mat-label>Branch</mat-label>
+                            <mat-select name="branch" formControlName="branch">
+                                <mat-option *ngFor="let branch of branches" [value]="branch">
+                                  {{ branch }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=25 [style.padding.%]=1>
+                            <mat-label>Year</mat-label>
+                            <mat-select name="year" formControlName="year">
+                                <mat-option *ngFor="let year of years" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <button mat-raised-button type="submit" color="primary" style="width: 25%; height: 52px;">Search</button>
+                    </form>
+                    <div *ngIf="!isLoading">
+                        <hr>
+                        <div class="row" style="min-height: 246px; padding-top: 0px;">
+                            <table style="width: 100%;">
+                                <tr style="border-bottom:solid 1px black">
+                                    <th style="width: 35%;">Course</th>
+                                    <th style="width: 10%;">Year</th>
+                                    <th style="width: 10%;">Section</th>
+                                    <th style="width: 30%;">Branch</th>
+                                    <th style="width: 15%;">Action</th>
+                                </tr>
+                                <tr *ngFor="let i of results | paginate : {id: 'pagination',itemsPerPage: 10, currentPage: page, totalItems: total};">
+                                    <td style="width: 35%;">{{i.course}}</td>
+                                    <td style="width: 10%;">{{years[i.year-1].viewValue}}</td>
+                                    <td style="width: 10%;">{{i.section}}</td>
+                                    <td style="width: 30%;">{{i.branch}}</td>
+                                    <td style="width: 15%;"><a (click)="openBottomSheet(i._id)">View</a>&nbsp;<a>Delete</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <hr>
+                        <div class="page">
+                            <pagination-controls id="pagination" (pageChange)="page = $event" (pageBoundsCorrection)="page = $event" maxSize="5">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Upload">
+                    <form #f="ngForm"  [formGroup]="uploadForm" style="margin-top: 3rem;" enctype="multipart/form-data" (ngSubmit)="submit(f)">
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Course</mat-label>
+                            <mat-select name="course" formControlName="course" (selectionChange)="getBranches2()" required>
+                                <mat-option *ngFor="let course of courses" [value]="course">
+                                  {{ course }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Branch</mat-label>
+                            <mat-select name="branch" formControlName="branch" required>
+                                <mat-option *ngFor="let branch of branches" [value]="branch">
+                                  {{ branch }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width.%]=33 [style.padding.%]=1>
+                            <mat-label>Year</mat-label>
+                            <mat-select name="year" formControlName="year" required>
+                                <mat-option *ngFor="let year of years" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <div class="row" style="padding-left:0%">
+                            <div class="col-md-4" style="padding: 0.5%;">
+                                <mat-form-field appearance="outline" [style.width.%]=100 [style.padding.%]=1>
+                                    <mat-label>Section</mat-label>
+                                    <mat-select name="section" formControlName="section" required>
+                                        <mat-option *ngFor="let year of years" [value]="year.value">
+                                          {{ year.viewValue }}
+                                        </mat-option>
+                                      </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                              <h4 style="font-weight: 600; font-family: Montserrat;">Time Table:</h4>
+                            </div>
+                            <div class="col-md-3">
+                              <input name="image" formControlName="image" required type="file" placeholder="Image" (change)="onFile($event)"/>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" color="primary" style="width: 80%;">Submit</button>
+                            </div>
+                          </div>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        
+    </mat-card>
+</div>   
