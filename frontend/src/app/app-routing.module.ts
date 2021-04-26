@@ -36,7 +36,15 @@ const routes: Routes = [
   ]
   },
   {path: 'faculty', component: FacultyNavComponent,canActivate:[AuthGuard],
-  
+  children:[
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'manage-students', component: StudentListComponent},
+    {path: 'view-fee', component:ViewFeeComponent},
+    {path: 'view-courses', component: ViewCoursesComponent},
+    {path: 'time-table', component:TimeTableComponent},
+    {path: 'profile', component:ProfileComponent},
+    {path: 'notices', component:NoticesComponent}
+  ]
   }  
 ];
 
