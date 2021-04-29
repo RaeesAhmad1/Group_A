@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: frontend
+    image: node:lts-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 4200:4200
+    # --host 0.0.0.0 to listen to all the interfaces from the container (dev env)
+    command: >
+      sh -c "yarn && yarn ng serve --host 0.0.0.0"
+
+  server:
+    container_name: server
+    image: node:lts-alpine
+    working_dir: /server
+    volumes:
+      - ./server:/server
+    # port 3000 has to match src/proxy.conf.json
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    environment:
+      MONGO_HOST: mongo
+    command: >
+      sh -c "npm i -g nodemon && npm install && nodemon ./bin/www"
+
+  mongo:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./data/db:/data/db
