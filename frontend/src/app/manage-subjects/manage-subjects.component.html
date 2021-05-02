@@ -1,0 +1,57 @@
+<mat-tab-group style="height: 100%;">
+    <mat-tab label="Create">
+        <form #f="ngForm" (ngSubmit)="create(f)" [formGroup]="createSubject" style="margin-top: 3rem;">
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Subject Name</mat-label>
+                <input matInput name="subject_name" formControlName="subject_name" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Subject Code</mat-label>
+                <input matInput name="subject_code" formControlName="subject_code" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Course Type</mat-label>
+                <mat-select name="subject_type" formControlName="subject_type" required>
+                    <mat-option *ngFor="let course of types" [value]="course" >
+                      {{ course }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Branch</mat-label>
+                <mat-select name="subject_branch" formControlName="subject_branch" required>
+                    <mat-option *ngFor="let course of branches" [value]="course" >
+                      {{ course }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Theory Marks</mat-label>
+                <input matInput name="theory_marks" formControlName="theory_marks" required type="number" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Practical Marks</mat-label>
+                <input matInput name="practical_marks" formControlName="practical_marks" required type="number" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                <mat-label>Subject_semster</mat-label>
+                <input matInput name="subject_semester" formControlName="subject_semester" required type="number" />
+            </mat-form-field>
+            <button  mat-raised-button
+            color="primary"
+            type="submit"
+            style="width: 45%; margin-left: 2%; height: 42px;"                    
+            >Add Subject</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Delete">    
+        <table style="width: 100%;">
+            <tr style="border-bottom: solid 1px black;">
+                <th>Name</th><th>Code</th><th>Branch</th><th>Action</th>
+            </tr>
+            <tr *ngFor="let i of subjects">
+                <td>{{i.subject_name}}</td><td>{{i.subject_code}}</td><td>{{i.subject_branch}}</td><td><a style="color: brown;" (click)="deleteSubject(i.subject_code)">Delete</a></td>
+            </tr>
+        </table>
+    </mat-tab>
+</mat-tab-group>
