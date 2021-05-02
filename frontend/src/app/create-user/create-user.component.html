@@ -1,0 +1,128 @@
+
+<div style="padding-top: 4%;">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title >Create User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="padding-top: 25px;">
+        <form class="login-form" #f="ngForm" [formGroup]="createuser" (ngSubmit)="onSubmit(f)" >
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <table>
+              <tr>
+                <td><label>Name:</label></td>
+                <td style="width: 100px;">
+                  <mat-form-field>
+                    <input matInput name="name" formControlName="name" required />
+                    <mat-error *ngIf="fval.name.errors?.required"r>Name is Required!</mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Mobile No:</label></td>
+                <td>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      name="mobile"
+                      formControlName="mobile"
+                      required
+                      minlength="10"
+                      maxlength="10"
+                    />
+                    <mat-error *ngIf="fval.mobile.errors?.required">Mobile Number is Required!</mat-error>
+                    <mat-error *ngIf="fval.mobile.errors?.minlength || fval.mobile.errors?.minlength">Invalid Mobile Number!</mat-error>
+                  </mat-form-field>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td><label>Email:</label></td>
+                <td>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      name="email"
+                      formControlName="email"
+                      required
+                     />
+                     <mat-error *ngIf="fval.email.errors?.required">Email is Required!</mat-error>
+                     <mat-error *ngIf="fval.email.errors?.email">Invalid Email Addresss!</mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Role</label>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-select
+                      name="privelage"
+                      formControlName="privilege"
+                      required
+                    >
+                      <mat-option
+                        *ngFor="let privelage of privelages"
+                        [value]="privelage.value"
+                      >
+                        {{ privelage.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fval.privilege.errors?.required">User Privilege is Required!</mat-error>
+                    
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Password:</label></td>
+                <td>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      name="pasword"
+                      formControlName="pswd"
+                      required
+                    />
+                    <mat-error *ngIf="fval.pswd.errors?.required">Password is Required!</mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Department:</label></td>
+                <td>
+                  <mat-form-field>
+                    <mat-select name="department" formControlName="dept" required>
+                      <mat-option
+                        *ngFor="let department of departments"
+                        [value]="department.value"
+                      >
+                        {{ department.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fval.dept.errors?.required">Department is Required!</mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <mat-card-actions>
+            <button
+              [disabled]="!createuser.valid"
+              mat-raised-button
+              color="primary"
+              type="submit"
+              *ngIf="!isLoading"
+            >
+              Register
+            </button>
+              <mat-spinner *ngIf="isLoading"
+                class="custom-spinner"
+                color="primary"
+                diameter="30"
+              ></mat-spinner>
+            
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
