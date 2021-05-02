@@ -1,0 +1,44 @@
+
+<div style="padding: 3%;">
+<h2 style="display: inline;">Fee Structure</h2>
+<div style="float:right;">
+<form #f="ngForm"  [formGroup]="courseForm2" >
+    <mat-form-field appearance="outline" [style.width.%]=100 [style.padding.%]=1>
+        <mat-label>Course</mat-label>
+        <mat-select name="course" formControlName="course"  (selectionChange)="branchform()">
+            <mat-option *ngFor="let course of courses" [value]="course" >
+              {{ course }}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+</form>
+</div>
+<div class="row" id="content" style="margin: 0px; overflow-x: auto; width: 100%;" #content>
+    <h3>{{selectedCourse}}</h3>
+    <div class="row" style="margin: 0px;" *ngFor="let y of year">
+        <h4>Year {{y}}:</h4>
+        <table style="border: solid 1px black" id=”my-table” >
+            <tr >
+                <th >Branch</th><th style="text-align: center; width: 50px;" *ngFor="let i of courseFee[y]">{{i.branch}}</th>
+            </tr>
+            <tr >
+                <th>Tution Fee</th><td *ngFor="let i of courseFee[y]">{{i.tutionfee}}</td>
+            </tr>
+            <tr >
+                <th>Book Fee</th><td *ngFor="let i of courseFee[y]">{{i.bookfees}}</td>
+            </tr>
+            <tr >
+                <th>Other Fee</th><td *ngFor="let i of courseFee[y]">{{i.otherfee}}</td>
+            </tr>
+            <tr >
+                <th>Hostel Fee</th><td *ngFor="let i of courseFee[y]">{{i.hostelfee}}</td>
+            </tr>
+            <tr >
+                <th>Total</th><td *ngFor="let i of courseFee[y]">{{i.totalfee}}</td>
+            </tr>
+        </table>
+    </div>
+    
+</div>
+<button mat-raised-button color="primary" (click)="downloadPdf()" style="margin-top: 8px;">Download</button>
+</div>

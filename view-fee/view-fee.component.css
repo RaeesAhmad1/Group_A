@@ -1,0 +1,28 @@
+tr{
+    border: solid 1px black;
+}
+
+th, td{
+    border: solid 1px black;
+    padding: 3px;
+    line-height: 28px;
+    font-size: 16px;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-family: Montserrat;
+}
+
+td{
+    padding-left: 7px;
+    padding-right: 7px;
+    text-align: right;
+    font-family: Montserrat;
+    font-weight: 500;
+}
+
+h4,h3{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: Montserrat;
+}
