@@ -1,0 +1,30 @@
+th, td{
+    padding: 3px;
+    line-height: 22px;
+    font-size: 14px;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+td{
+    text-align: center;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+h4,h3{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: Montserrat;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.example-chip-list {
+    width: 70%;
+    padding-right: 3%;
+  }
