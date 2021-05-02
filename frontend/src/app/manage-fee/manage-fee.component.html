@@ -1,0 +1,102 @@
+<div style="padding-top: 4%;">
+    <h2 style="margin-left: 4%;">Manage Fee Structure</h2>
+    <mat-card class="login-card" *ngIf="iscourses">
+        <mat-tab-group style="height: 100%;">
+        <mat-tab label="Create/Edit">
+            <form #f="ngForm" (ngSubmit)="submit(f)" [formGroup]="feeForm" style="margin-top: 3rem;">
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                    <mat-label>Course</mat-label>
+                    <mat-select name="course" formControlName="course" (selectionChange)="branchform()">
+                        <mat-option *ngFor="let course of courses" [value]="course">
+                          {{ course }}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>                                  
+                    <mat-label>Branch</mat-label>
+                    <mat-select name="branch" formControlName="branch" >
+                        <mat-option *ngFor="let branch of branches" [value]="branch">
+                          {{ branch }}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>   
+                <mat-form-field appearance="outline" [style.width.%]=100 [style.padding.%]=1>                                  
+                    <mat-label>Year</mat-label>
+                    <mat-select name="year" formControlName="year" >
+                    <mat-option *ngFor="let year of years" [value]="year.value">
+                      {{ year.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                    <mat-label>Tution Fee</mat-label>
+                    <input matInput name="tutionfee" formControlName="tutionfee" type="number" required />
+                </mat-form-field>
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                    <mat-label>Book Fee</mat-label>
+                    <input matInput name="bookfees" formControlName="bookfees" type="number" required />
+                </mat-form-field>
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                    <mat-label>Hostel Fee</mat-label>
+                    <input matInput name="hostelfee" formControlName="hostelfee" type="number" required />
+                </mat-form-field>
+                <mat-form-field appearance="outline" [style.width.%]=50 [style.padding.%]=1>
+                    <mat-label>Other Fee</mat-label>
+                    <input matInput name="otherfee" formControlName="otherfee" type="number" required />
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" style="width: 40%; margin-left: 30%;" >Submit</button>
+
+            </form>
+        </mat-tab>
+        <mat-tab label="Delete">  
+            <div style="padding: 2%;">
+                <div class="alert alert-warning" role="alert">
+                    Warning! Delete actions <strong>cannot</strong> be reversed.
+                  </div>
+                <button  mat-raised-button
+                color="warn"
+                type="btn"
+                style="width: 100%;"
+                (click)="delete_all()"
+                >Delete All</button>
+                <hr>
+                <div class="row">
+                    <form (ngSubmit)="delete()" [formGroup]="queryForm" style="margin-top: 3rem;">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline" [style.width.%]=100>
+                                <mat-label>Course</mat-label>
+                                <mat-select name="course" formControlName="course" (selectionChange)="branchform2()">
+                                    <mat-option *ngFor="let course of courses" [value]="course">
+                                      {{ course }}
+                                    </mat-option>
+                                  </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" [style.width.%]=100>                                  
+                                <mat-label>Branch</mat-label>
+                                <mat-select name="branch" formControlName="branch" >
+                                    <mat-option *ngFor="let branch of branches" [value]="branch">
+                                      {{ branch }}
+                                    </mat-option>
+                                  </mat-select>
+                            </mat-form-field>   
+                            <mat-form-field appearance="outline" [style.width.%]=100>                                  
+                                <mat-label>Year</mat-label>
+                                <mat-select name="year" formControlName="year" >
+                                <mat-option *ngFor="let year of years" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>  
+                        </div>
+                        <div class="col-md-6">
+                            <button mat-raised-button color="warn" style="width: 50%; margin-top: 14%; margin-left: 25%; line-height: 60px;" >Delete</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
